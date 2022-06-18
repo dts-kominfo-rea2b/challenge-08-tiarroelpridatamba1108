@@ -32,14 +32,14 @@
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
-      let button = document.querySelector("#todo-submit");
-      let input = document.querySelector("#todo-input");
-      let output = document.querySelector("#todo-output");
+      const button = document.querySelector("#todo-submit");
+      const input = document.querySelector("#todo-input");
+      const output = document.querySelector("#todo-output");
 
-      function createItemList(itemList) {
+      function createItemList(item) {
         let li = document.createElement("li");
-        li.textContent = itemList;
-        li.className = "input-item";
+        li.textContent = item;
+        li.className = "todo-item";
         return li;
       }
 
@@ -47,19 +47,18 @@
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
-        output.appendChild(createItemList(toDoItem))
-        input.value="";
+        output.appendChild(createListItem(toDoItem));
+        input.value = "";
       }
 
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
-      button.addEventListener('click', () => fnClickHandler(input.value));
+      button.addEventListener("click", () => fnClickHandler(input.value));
 
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
-      input.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") 
-        fnClickHandler(input.value)
+      input.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") fnClickHandler(input.value);
       });
     </script>
   </body>
